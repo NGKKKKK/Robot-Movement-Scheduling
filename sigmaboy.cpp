@@ -66,6 +66,7 @@ void BFS(int a, int b, int c, int d, int r, const vector<vector<int>>& adj, cons
         cout << "Cannot!" << endl;
         return;
     }
+    cout << "Movement Schedule" << endl;
     vector<pair<int,int>> path;
     pair<int,int> curr = end;
     while (curr != start){
@@ -80,17 +81,25 @@ void BFS(int a, int b, int c, int d, int r, const vector<vector<int>>& adj, cons
 }
 
 int main(){
-    int n,m; cin >> n >> m;
+    cout << "INPUT: " << endl;
+    int n,m;
+    cout << "Enter n = "; cin >> n;
+    cout << "Enter m = "; cin >> m;
     vector<vector<int>> adj(n, vector<int>(n,INF));
     for (int i = 0; i < n; ++i) adj[i][i] = 0;
     for (int i = 0; i < m; ++i){
         int x, y, w;
+        cout << "Enter x  y  w = ";
         cin >> x >> y >> w;
         adj[x][y] = adj[y][x] = w;
     }
-    int a, b, c, d; cin >> a >> b >> c >> d;
-    int r; cin >> r;
-    cout << "ANSWER:" << endl;
+    int a, b, c, d;
+    cout << "Enter a b c d = ";
+    cin >> a >> b >> c >> d;
+    int r;
+    cout << "Enter r = ";cin >> r;
+    cout << endl;
+    cout << "OUTPUT:" << endl;
     vector<vector<int>> minDist = FW(n, adj);
     BFS(a,b,c,d,r,adj,minDist,n);
     return 0;
